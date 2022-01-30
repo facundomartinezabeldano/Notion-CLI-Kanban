@@ -1,2 +1,4 @@
+.gitattributes
+.gitignore
 .vscode
 __pycache__
