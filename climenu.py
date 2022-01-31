@@ -1,5 +1,10 @@
 from InquirerPy import inquirer
 import menues as mn
+from colorama import Back , Fore, Style
+
+with open("kanbanlogo.txt","r",encoding="utf8") as f:
+    for line in f:
+            print(Fore.GREEN + line.rstrip())
 
 
 def main_menu():
