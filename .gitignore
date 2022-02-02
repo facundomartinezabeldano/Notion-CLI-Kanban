@@ -3,3 +3,4 @@
 .vscode
 __pycache__
 kanbanlogo.txt
+/venv
