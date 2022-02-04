@@ -9,7 +9,7 @@
 </div>
 </br>
 
-I've been using Notion ever since I needed to write down tasks for my every day life but I couldn't stop to notice that sometimes I missed things just because I had to open up notion, write down the thing I needed to do and in case of doing it upda the Kanban accordingly, that's why I made this little silly CLI interface for my notion notes, feel free to try it your own 
+I've been using a Kanban on Notion ever since I needed to write down tasks for my every day life, but I couldn't stop to notice that sometimes I missed things just because I had to open up notion, write down the thing I needed to do, and in case of doing it updating the Kanban accordingly, that's why I made this little silly CLI interface for my notion notes, feel free to try it your own 
 
 
 #### how to:
