@@ -29,3 +29,4 @@ TODO:
 TODO (Code):
 - [ ] Edit task function
 - [ ] Testing maybe dunno
+- [ ] Make it avaliable by everyone to use
