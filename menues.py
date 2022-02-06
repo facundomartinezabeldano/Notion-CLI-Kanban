@@ -1,3 +1,4 @@
+from alive_progress import alive_bar
 from distutils.fancy_getopt import fancy_getopt
 from multiprocessing.connection import wait
 
@@ -102,10 +103,13 @@ def goodbye():
 def clean_screen_and_print_logo(waiting=False):
 
     if waiting:
-        for i in range(1, 5):
-            print(f"Cleaning the screen in {i} seconds ...")
-            time.sleep(1)
+        print('Your screen will be clear in 5s')
+        with alive_bar(5) as bar:
+            for i in range (0,5):
+                time.sleep(1)
+                bar()  
         os.system("cls" if os.name == "nt" else "clear")
+        
         with open("kanbanlogo.txt", "r", encoding="utf8") as f:
             for line in f:
                 print(Fore.GREEN + line.rstrip())
