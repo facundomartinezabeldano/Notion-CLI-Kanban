@@ -14,7 +14,7 @@ def edit_task_action(task_id, new_parameters): #TODO
     return
 
 
-def list_tasks_action(showbar=True) -> dict[str, list]:
+def list_tasks_action(showbar=True):
     url = "https://api.notion.com/v1/databases/63cd54d3b2254b02b9f258c52e38400a/query"
     payload = {"page_size": 100}
     headers = {
@@ -34,12 +34,8 @@ def list_tasks_action(showbar=True) -> dict[str, list]:
                 children = {
                     "Task": page["properties"]["Task"]["title"][0]["text"]["content"],
                     "Status": page["properties"]["Status"]["multi_select"][0]["name"],
-                    "Short Description": page["properties"]["Short Description"][
-                        "rich_text"
-                    ][0]["plain_text"],
-                    "Due date": page["properties"]["Due date"]["rich_text"][0][
-                        "plain_text"
-                    ],
+                    "Short Description": page["properties"]["Short Description"]["rich_text"][0]["plain_text"],
+                    "Due date": page["properties"]["Due date"]["rich_text"][0]["plain_text"],
                 }
                 clean_payload["ids"].append(page["id"])
                 clean_payload["payloads"].append(children)
@@ -151,7 +147,5 @@ def add_task_action(request) -> None:
         parent={"database_id": "63cd54d3b2254b02b9f258c52e38400a"},
         properties=task_payload,
     )
-    print(
-        f'Task {request["Title"]} has been successfully added to Kanban with status: {request["Status"]} ✔ '
-    )
+    print(f'Task {request["Title"]} has been successfully added to Kanban with status: {request["Status"]} ✔ ')
     return

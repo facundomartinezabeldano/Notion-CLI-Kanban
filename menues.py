@@ -1,10 +1,13 @@
 from distutils.fancy_getopt import fancy_getopt
+from multiprocessing.connection import wait
 
-from colorama import Back, Fore, Style
+from colorama import Fore
 from InquirerPy import inquirer
 from tabulate import tabulate
 
 import actions as ac
+import os
+import time
 
 
 def add_task_menu():
@@ -26,6 +29,7 @@ def add_task_menu():
     }
 
     ac.add_task_action(request)
+    clean_screen_and_print_logo(waiting=True)
     return
 
 
@@ -56,7 +60,8 @@ def list_tasks_menu(showmenu=True):
 
 def edit_task_menu():  # TODO
     task_name = inquirer.fuzzy(
-        message="Select a task to edit (this will change the entire task)", choices=ls
+        message="Select a task to edit (this will change the entire task)",
+        choices="adfadsf",
     ).execute()
     ac.edit_task_action(task_name)
     return print(f"Task {task_name} was edited successfully")
@@ -67,6 +72,7 @@ def delete_task_menu():
     task_id = inquirer.number(message="Select a task number to delete ❌ ").execute()
     ac.delete_task_action(tasks_ids[int(task_id)])
     print(f"Task number: {task_id} was deleted successfully")
+    clean_screen_and_print_logo(waiting=True)
     return
 
 
@@ -81,7 +87,9 @@ def set_status_menu():
         message="Select new status", choices=["Backlog", "To do", "Doing", "Done"]
     ).execute()
     ac.set_status_action(ids[int(task_id)], new_status)
-    return print(f"Task status changed to => {new_status} successfully 🎉 ")
+    print(f"Task status changed to => {new_status} successfully 🎉 ")
+    clean_screen_and_print_logo(waiting=True)
+    return
 
 
 def goodbye():
@@ -89,3 +97,22 @@ def goodbye():
         for line in f:
             print(Fore.GREEN + line.rstrip())
     return exit()
+
+
+def clean_screen_and_print_logo(waiting=False):
+
+    if waiting:
+        for i in range(1, 5):
+            print(f"Cleaning the screen in {i} seconds ...")
+            time.sleep(1)
+        os.system("cls" if os.name == "nt" else "clear")
+        with open("kanbanlogo.txt", "r", encoding="utf8") as f:
+            for line in f:
+                print(Fore.GREEN + line.rstrip())
+        return
+
+    os.system("cls" if os.name == "nt" else "clear")
+    with open("kanbanlogo.txt", "r", encoding="utf8") as f:
+        for line in f:
+            print(Fore.GREEN + line.rstrip())
+    return
