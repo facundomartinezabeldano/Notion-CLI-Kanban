@@ -5,7 +5,7 @@ from notion_client import Client
 from notion_client.helpers import get_id
 
 
-data = open('src/userdata.txt','r')
+data = open("src/userdata.txt", "r")
 data_payload = data.readlines()
 secret = data_payload[0][:-1]
 id = data_payload[1]
@@ -13,8 +13,8 @@ data.close()
 notion = Client(auth=secret)
 
 
-def edit_task_action(task_id, new_parameters): #TODO
-    properties_payload = {"Status": {"multi_select": [{"name": 'adsfads'}]}}
+def edit_task_action(task_id, new_parameters):  # TODO
+    properties_payload = {"Status": {"multi_select": [{"name": "adsfads"}]}}
     notion.pages.update(page_id=task_id, properties=properties_payload)
     return
 
@@ -40,7 +40,9 @@ def list_tasks_action(showbar=True):
                     "Task": page["properties"]["Task"]["title"][0]["text"]["content"],
                     "Status": page["properties"]["Status"]["multi_select"][0]["name"],
                     "Short Description": page["properties"]["Short Description"]["rich_text"][0]["plain_text"],
-                    "Due date": page["properties"]["Due date"]["rich_text"][0]["plain_text"],
+                    "Due date": page["properties"]["Due date"]["rich_text"][0][
+                        "plain_text"
+                    ],
                 }
                 clean_payload["ids"].append(page["id"])
                 clean_payload["payloads"].append(children)
@@ -61,8 +63,8 @@ def list_tasks_action(showbar=True):
     return clean_payload
 
 
-def delete_task_action(id):
-    notion.blocks.delete(block_id=id)
+def delete_task_action(id_block):
+    notion.blocks.delete(block_id=id_block)
     return
 
 
@@ -149,8 +151,10 @@ def add_task_action(request) -> None:
 
     # To see the database schema notion.databases.retrieve('63cd54d3b2254b02b9f258c52e38400a')
     notion.pages.create(
-        parent={"database_id": "63cd54d3b2254b02b9f258c52e38400a"},
+        parent={"database_id": id},
         properties=task_payload,
     )
-    print(f'Task {request["Title"]} has been successfully added to Kanban with status: {request["Status"]} ✔ ')
+    print(
+        f'Task {request["Title"]} has been successfully added to Kanban with status: {request["Status"]} ✔ '
+    )
     return

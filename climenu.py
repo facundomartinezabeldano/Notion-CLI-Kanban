@@ -7,16 +7,21 @@ from colorama import Fore
 with open("src/kanbanlogo.txt", "r", encoding="utf8") as f:
     for line in f:
         print(Fore.GREEN + line.rstrip())
-  
+
+
 def main_menu():
-    if (os.stat("src/userdata.txt").st_size == 0):
-        with open("src/userdata.txt","w+") as data:
+    if os.stat("src/userdata.txt").st_size == 0:
+        with open("src/userdata.txt", "w+") as data:
             api_key = inquirer.secret(message="Please provide your API key:").execute()
-            database_id = inquirer.text(message="Please provide your database id:").execute()
+            database_id = inquirer.text(
+                message="Please provide your database id:"
+            ).execute()
             data.write(api_key)
-            data.write("\n") #I'm way too lazy to google how to do this in one line of code feel free to fork here king / queen
+            data.write(
+                "\n"
+            )  # I'm way too lazy to google how to do this in one line of code feel free to fork here king / queen
             data.write(database_id)
-    
+
     l = [
         "Add task 📜 ",
         "List tasks 🧾 ",
@@ -26,7 +31,7 @@ def main_menu():
         "Exit 🔚",
         "Clear screen",
     ]
-    
+
     r = inquirer.fuzzy(message="Select an action to perfom", choices=l).execute()
 
     options = {

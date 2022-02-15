@@ -102,13 +102,13 @@ def goodbye():
 
 def clean_screen_and_print_logo(waiting=False):
     if waiting:
-        print('Your screen will be clear in 5s')
-        with alive_bar(total = 5) as bar:
-            for i in range (0,5):
+        print("Your screen will be clear in 5s")
+        with alive_bar(total=5) as bar:
+            for i in range(0, 5):
                 time.sleep(1)
-                bar()  
+                bar()
         os.system("cls" if os.name == "nt" else "clear")
-        
+
         with open("src/kanbanlogo.txt", "r", encoding="utf8") as f:
             for line in f:
                 print(Fore.GREEN + line.rstrip())
