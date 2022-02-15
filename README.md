@@ -33,7 +33,7 @@ I've been using a Kanban on Notion ever since I needed to write down tasks for m
 3. Once you copied the template you need to add the integration to the Kanban aka "Database" read [here](https://www.notion.so/my-integrations) specifically "step 2"
 4. git clone `https://github.com/facundomartinezabeldano/Notion-CLI-Kanban`
 5. `pip install -r requirements.txt`
-6. The script will ask for your API key and database ID only the first time you can add those in src/userdata.json by your own if you want to
+6. The script will ask for your API key and database ID only the first time **MAKE SURE** to add those in src/userdata.json before running
 7. run the script `python notionCLI.py`
 
 
