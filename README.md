@@ -6,6 +6,9 @@
   <div align= "center">
     A CLI based script for a Kanban
   </div>
+  <div align= "center">
+    <a href="tox.ini"><img src="https://img.shields.io/pypi/pyversions/notion-client" alt="Supported Python Versions"></a>
+  </div>
 </div>
 </br>
 
