@@ -10,17 +10,12 @@ with open("src/kanbanlogo.txt", "r", encoding="utf8") as f:
 
 
 def main_menu():
-    if os.stat("src/userdata.txt").st_size == 0:
-        with open("src/userdata.txt", "w+") as data:
-            api_key = inquirer.secret(message="Please provide your API key:").execute()
-            database_id = inquirer.text(
-                message="Please provide your database id:"
-            ).execute()
-            data.write(api_key)
-            data.write(
-                "\n"
-            )  # I'm way too lazy to google how to do this in one line of code feel free to fork here king / queen
-            data.write(database_id)
+    if os.stat("src/userdata.json").st_size == 0:
+        data = open("src/userdata.txt", "w+")
+        api_key = inquirer.secret(message="Please provide your API key:").execute()
+        database_id = inquirer.text(message="Please provide your database id:").execute()
+        data.write(f"{api_key}\n{database_id}")
+        data.close()
 
     l = [
         "Add task 📜 ",

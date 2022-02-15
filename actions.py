@@ -3,13 +3,14 @@ import requests
 from alive_progress import alive_bar
 from notion_client import Client
 from notion_client.helpers import get_id
+import json
 
+user_data = open("src/userdata.json", "r")
+user_data_payload = json.load(user_data)
+secret = user_data_payload["log_info"]["api_key"]
+id = user_data_payload["log_info"]["database_id"]
+user_data.close()
 
-data = open("src/userdata.txt", "r")
-data_payload = data.readlines()
-secret = data_payload[0][:-1]
-id = data_payload[1]
-data.close()
 notion = Client(auth=secret)
 
 
@@ -31,7 +32,7 @@ def list_tasks_action(showbar=True):
     response = requests.request("POST", url, json=payload, headers=headers).json()
     clean_payload = {
         "payloads": [],  # payload list
-        "ids": [],  # id list
+        "ids": [],       # id list
     }
     if showbar:
         with alive_bar(len(response["results"])) as bar:
@@ -39,7 +40,9 @@ def list_tasks_action(showbar=True):
                 children = {
                     "Task": page["properties"]["Task"]["title"][0]["text"]["content"],
                     "Status": page["properties"]["Status"]["multi_select"][0]["name"],
-                    "Short Description": page["properties"]["Short Description"]["rich_text"][0]["plain_text"],
+                    "Short Description": page["properties"]["Short Description"][
+                        "rich_text"
+                    ][0]["plain_text"],
                     "Due date": page["properties"]["Due date"]["rich_text"][0][
                         "plain_text"
                     ],
@@ -149,7 +152,7 @@ def add_task_action(request) -> None:
         },
     }
 
-    # To see the database schema notion.databases.retrieve('63cd54d3b2254b02b9f258c52e38400a')
+    # To see the database schema notion.databases.retrieve(id)
     notion.pages.create(
         parent={"database_id": id},
         properties=task_payload,
