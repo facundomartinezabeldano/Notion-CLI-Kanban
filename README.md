@@ -29,7 +29,7 @@ I've been using a Kanban on Notion ever since I needed to write down tasks for m
 
 ## How to ⚙️ :
 1. Duplicate the template from [here](https://boundless-heather-d8e.notion.site/63cd54d3b2254b02b9f258c52e38400a?v=8df3f9fdd3f446c8b2d89c794e29fd81) (right upper corner of the screen)
-2. Create a notion integration information [here](https://www.notion.so/my-integrations)
+2. Create a notion integration, information [here](https://www.notion.so/my-integrations)
 3. Once you copied the template you need to add the integration to the Kanban aka "Database" read [here](https://www.notion.so/my-integrations) specifically "step 2"
 4. git clone `https://github.com/facundomartinezabeldano/Notion-CLI-Kanban`
 5. `pip install -r requirements.txt`
