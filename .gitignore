@@ -1,4 +1,6 @@
 .gitattributes
 .gitignore
 .vscode
+pruebas.py
+userdata.json
 __pycache__
