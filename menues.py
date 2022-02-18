@@ -94,28 +94,27 @@ def set_status_menu():
 
 
 def goodbye():
-    with open("src/goodbye.txt", "r", encoding="utf8") as f:
+    with open(os.path.join("src","goodbye.txt"), "r", encoding="utf8") as f:
         for line in f:
             print(Fore.GREEN + line.rstrip())
     return exit()
 
-
-def clean_screen_and_print_logo(waiting=False):
-    if waiting:
-        print("Your screen will be clear in 5s")
-        with alive_bar(total=5) as bar:
-            for i in range(0, 5):
-                time.sleep(1)
-                bar()
-        os.system("cls" if os.name == "nt" else "clear")
-
-        with open("src/kanbanlogo.txt", "r", encoding="utf8") as f:
-            for line in f:
-                print(Fore.GREEN + line.rstrip())
-        return
-
-    os.system("cls" if os.name == "nt" else "clear")
-    with open("src/kanbanlogo.txt", "r", encoding="utf8") as f:
+def print_logo():
+    with open(os.path.join("src","kanbanlogo.txt"), "r", encoding="utf8") as f:
         for line in f:
             print(Fore.GREEN + line.rstrip())
     return
+
+
+def clean_screen_and_print_logo(waiting=False):
+    if waiting:
+        print("Your screen will be clear in 3s")
+        with alive_bar(total=5) as bar:
+            for i in range(0, 3):
+                time.sleep(1)
+                bar()
+        os.system("cls" if os.name == "nt" else "clear")
+        return print_logo()
+
+    os.system("cls" if os.name == "nt" else "clear")
+    return print_logo()

@@ -1,6 +1,6 @@
 from InquirerPy import inquirer
-from black import main
 import menues as mn
+import json
 import os
 from colorama import Fore
 
@@ -10,12 +10,12 @@ with open("src/kanbanlogo.txt", "r", encoding="utf8") as f:
 
 
 def main_menu():
-    if os.stat("src/userdata.json").st_size == 0:
-        data = open("src/userdata.txt", "w+")
-        api_key = inquirer.secret(message="Please provide your API key:").execute()
-        database_id = inquirer.text(message="Please provide your database id:").execute()
-        data.write(f"{api_key}\n{database_id}")
-        data.close()
+
+    data_path = os.path.join("src", "userdata.json")
+    with open(file=data_path, mode="r", encoding="utf8") as user_data:
+        user_data_payload = json.load(user_data)
+        if (user_data_payload["log_info"]["api_key"] == "API KEY" or user_data_payload["log_info"]["database_id"] == "DATABASE ID"):
+            raise Exception("Please provide your API key and database id")
 
     l = [
         "Add task 📜 ",

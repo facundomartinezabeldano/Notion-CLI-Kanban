@@ -1,3 +1,4 @@
+import os
 import pprint
 import requests
 from alive_progress import alive_bar
@@ -5,7 +6,8 @@ from notion_client import Client
 from notion_client.helpers import get_id
 import json
 
-user_data = open("src/userdata.json", "r")
+data_path = os.path.join("src", "userdata.json")
+user_data = open(file=data_path, mode="r", encoding="utf8")
 user_data_payload = json.load(user_data)
 secret = user_data_payload["log_info"]["api_key"]
 id = user_data_payload["log_info"]["database_id"]
@@ -32,10 +34,11 @@ def list_tasks_action(showbar=True):
     response = requests.request("POST", url, json=payload, headers=headers).json()
     clean_payload = {
         "payloads": [],  # payload list
-        "ids": [],       # id list
+        "ids": [],  # id list
     }
     if showbar:
-        with alive_bar(len(response["results"])) as bar:
+        t = len(response["results"])
+        with alive_bar(t) as bar:
             for page in response["results"]:
                 children = {
                     "Task": page["properties"]["Task"]["title"][0]["text"]["content"],
