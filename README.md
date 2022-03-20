@@ -23,13 +23,12 @@ I've been using a Kanban on Notion ever since I needed to write down tasks for m
 
 <div align="center">
   <h3>So this is just like a TODO list but with no list?</h3>
-    <img src="https://i.imgur.com/v1q728w.png">
+    <img src="./src/yes2.png">
     <p>yes</p>
 </div align= "center">
 
 ## Screenshots 💻 :
 <div align= "center">
-  <a href="tox.ini"><img src="./src/screenshot1.png" ></a>
   <a href="tox.ini"><img src="./src/screenshot2.png" ></a>
 </div>
 
