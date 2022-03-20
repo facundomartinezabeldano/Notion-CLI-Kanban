@@ -3,3 +3,4 @@
 __pycache__
 src/userdata.json
 *.json
+src/userdata.json
