@@ -40,10 +40,8 @@ def list_tasks_menu(showmenu=True):
         print(Fore.GREEN + "Loading your tasks this may take some time 🕐")
         data = ac.list_tasks_action()
         fancy_data = [
-            [d["Task"], d["Short Description"], d["Status"], d["Due date"]]
-            for d in data["payloads"]
-        ]
-        h = ["Task", "Status", "Short Description", "Due date"]
+            [d["Task"], d["Short Description"], d["Status"], d["Due date"]] for d in data["payloads"]]
+        h = ["Task", "Short description", "Status", "Due date"]
         print(
             tabulate(
                 tabular_data=fancy_data,
@@ -54,6 +52,15 @@ def list_tasks_menu(showmenu=True):
                 showindex=True,
             )
         )
+        data_analysis_array = [d[2] for d in fancy_data]
+        todos = [ i for i in data_analysis_array if i == "To do" ]
+        dones = [ i for i in data_analysis_array if i == "Done" ]
+        doings = [ i for i in data_analysis_array if i == "Doing" ]
+        
+        print(f'{Fore.YELLOW} You have a total of {Fore.BLUE} {len(fancy_data)} {Fore.YELLOW} tasks in your Kanban Board')
+        print(f'{Fore.CYAN} You have a total of {len(todos)} tasks in "To do" status')
+        print(f'{Fore.RED} You have a total of {len(dones)} tasks in "Done" status')
+        print(f'{Fore.WHITE} You have a total of {len(doings)} tasks in "Doing" status ')
         return data["ids"]
     data = ac.list_tasks_action()
     return data["ids"]

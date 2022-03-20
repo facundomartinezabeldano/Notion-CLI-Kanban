@@ -58,9 +58,7 @@ def list_tasks_action(showbar=True):
         children = {
             "Task": page["properties"]["Task"]["title"][0]["text"]["content"],
             "Status": page["properties"]["Status"]["multi_select"][0]["name"],
-            "Short Description": page["properties"]["Short Description"]["rich_text"][
-                0
-            ]["plain_text"],
+            "Short Description": page["properties"]["Short Description"]["rich_text"][0]["plain_text"],
             "Due date": page["properties"]["Due date"]["rich_text"][0]["plain_text"],
         }
         clean_payload["ids"].append(page["id"])
