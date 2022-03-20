@@ -18,7 +18,7 @@ I've been using a Kanban on Notion ever since I needed to write down tasks for m
 
 <div align="center">
   <h3>Why using a CLI instead of the GUI?</h3>
-    <p>To which I add... why not using both? that's what this CLI is pointing to you can still use the Kanban layout of this repository in Notion in fact that's something I promote but this aims to reduce the toiling of opening the browser on your own and doing manually </p>
+    <p>To which I add... why not using both? that's what this CLI is pointing to you can still use the Kanban layout of this repository in Notion in fact, that's my personal advice, but this script aims to reduce the toiling of opening the browser and editing the kanban on your own </p>
 </div align= "center">
 
 <div align="center">
