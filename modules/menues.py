@@ -6,7 +6,7 @@ from colorama import Fore
 from InquirerPy import inquirer
 from tabulate import tabulate
 
-import actions as ac
+import modules.actions as ac
 import os
 import time
 

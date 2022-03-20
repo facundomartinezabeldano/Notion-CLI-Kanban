@@ -1,5 +1,5 @@
 from InquirerPy import inquirer
-import menues as mn
+import modules.menues as mn
 import json
 import os
 from colorama import Fore
