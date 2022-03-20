@@ -27,6 +27,14 @@ I've been using a Kanban on Notion ever since I needed to write down tasks for m
     <p>yes</p>
 </div align= "center">
 
+## Screenshots 💻 :
+<div align= "center">
+  <a href="tox.ini"><img src="./src/screenshot1.png" ></a>
+  <a href="tox.ini"><img src="./src/screenshot2.png" ></a>
+</div>
+
+
+
 ## How to ⚙️ :
 1. Duplicate the template from [here](https://boundless-heather-d8e.notion.site/63cd54d3b2254b02b9f258c52e38400a?v=8df3f9fdd3f446c8b2d89c794e29fd81) (right upper corner of the screen)
 2. Create a notion integration, information [here](https://www.notion.so/my-integrations)
