@@ -5,6 +5,11 @@ from alive_progress import alive_bar
 from notion_client import Client
 from notion_client.helpers import get_id
 import json
+import platform
+import asyncio
+
+if platform.system() == 'Windows':
+   asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 data_path = os.path.join("src", "userdata.json")
 user_data = open(file=data_path, mode="r", encoding="utf8")

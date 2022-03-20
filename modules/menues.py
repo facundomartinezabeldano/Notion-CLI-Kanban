@@ -10,6 +10,12 @@ import modules.actions as ac
 import os
 import time
 
+import platform
+import asyncio
+
+if platform.system() == 'Windows':
+   asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
 
 def add_task_menu():
 
@@ -60,12 +66,12 @@ def list_tasks_menu(showmenu=True):
         doings = [i for i in data_analysis_array if i == "Doing"]
 
         print(
-            f"{Fore.YELLOW} You have a total of {Fore.BLUE} {len(fancy_data)} {Fore.YELLOW} tasks in your Kanban Board"
+            f">{Fore.YELLOW} You have a total of{Fore.BLUE} {len(fancy_data)} {Fore.YELLOW} tasks in your Kanban Board"
         )
-        print(f'{Fore.CYAN} You have a total of {len(todos)} tasks in "To do" status')
-        print(f'{Fore.RED} You have a total of {len(dones)} tasks in "Done" status')
+        print(f'>{Fore.CYAN} You have a total of {len(todos)} tasks in "To do" status')
+        print(f'>{Fore.RED} You have a total of {len(dones)} tasks in "Done" status')
         print(
-            f'{Fore.WHITE} You have a total of {len(doings)} tasks in "Doing" status '
+            f'>{Fore.WHITE} You have a total of {len(doings)} tasks in "Doing" status '
         )
         return data["ids"]
     data = ac.list_tasks_action()
